@@ -7,6 +7,7 @@ const searchCount = document.getElementById("search-count");
 function setup() {
   const allEpisodes = getAllEpisodes();
   makePageForEpisodes(allEpisodes);
+  selectOption();
   //event listener
   searchBox.addEventListener("keyup", onSearchKeyUp);
 }
@@ -36,6 +37,21 @@ function makePageForEpisodes(episodeList) {
 
     eachEpisodeDiv.append(headerTag, imageTag, summaryText);
     allEpisodeDiv.append(eachEpisodeDiv);
+  });
+}
+
+function selectOption() {
+  allEpisodes = getAllEpisodes();
+  episodeList = allEpisodes.forEach((e) => {
+    let optionTag = document.createElement("option");
+    let listTag = document.getElementById("list");
+    let dropdownList =
+      e.number > 9
+        ? ` S0${e.season}E${e.number} - ${e.name}`
+        : ` S0${e.season}E0${e.number} - ${e.name}`;
+    optionTag.innerText = dropdownList;
+    
+    listTag.append(optionTag);
   });
 }
 
