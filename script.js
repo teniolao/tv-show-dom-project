@@ -1,7 +1,9 @@
 //You can edit ALL of the code here
+
 let selectTag = document.getElementById("list");
 const searchBox = document.getElementById("search-box");
 const searchCount = document.getElementById("search-count");
+let allEpisodesDiv = document.getElementById("all-episodesDiv");
 
 function setup() {
   const allEpisodes = getAllEpisodes();
@@ -13,8 +15,7 @@ function setup() {
 }
 
 function makePageForEpisodes(episodeList) {
-  let allEpisodeDiv = document.getElementById("all-episodesDiv");
-  allEpisodeDiv.innerHTML = "";
+  allEpisodesDiv.innerHTML = "";
 
   episodeList.forEach((e) => {
     let eachEpisodeDiv = document.createElement("div");
@@ -36,7 +37,7 @@ function makePageForEpisodes(episodeList) {
     summaryText.innerText = text;
 
     eachEpisodeDiv.append(headerTag, imageTag, summaryText);
-    allEpisodeDiv.append(eachEpisodeDiv);
+    allEpisodesDiv.append(eachEpisodeDiv);
   });
 }
 
@@ -51,16 +52,18 @@ function selectOption() {
         ? ` S0${e.season}E${e.number} - ${e.name}`
         : ` S0${e.season}E0${e.number} - ${e.name}`;
     optionTag.innerText = dropdownList;
-
     selectTag.append(optionTag);
   });
 }
 
 function getSelectedValue() {
   let selectedValue = selectTag.value;
-
- // makePageForEpisodes();
-  //for(let i = 0; i <allEpisodes.length; i++)
+  const filteredEpisodes = allEpisodes.filter((e) => {
+    const episodeName = e.name;
+    return episodeName.includes(selectedValue.substring(9));
+  });
+  allEpisodesDiv.innerHTML = "";
+  makePageForEpisodes(filteredEpisodes);
 }
 
 function onSearchKeyUp(event) {
