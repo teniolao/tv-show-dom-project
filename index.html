@@ -9,15 +9,20 @@
   </head>
 
   <body>
-    <div id="root">
-      <header id="search-header">
-        <select id="list">
+     <header id="search-header">
+        <!-- id="selectShow"> -->
+        <select class="select selectShow"></select>
+        <select class="select" id="selectEpisode">
         </select>
-        <input id="search-box" type="text" placeholder="Search.."/>
+        <input id="input-searchBox" type="text" placeholder="Search.."/>
         <div id="search-count"></div>
       </header>
+    <div id="root">
       <div id="all-episodesDiv"></div>
     </div>
+
+    <!-- Loads a provided function called getAllShows() which returns all episodes -->
+    <script src="shows.js"></script>
 
     <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
     <script src="episodes.js"></script>
