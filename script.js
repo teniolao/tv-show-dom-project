@@ -143,6 +143,7 @@ function makePageForShows(shows) {
     wrapDiv.className = "content-wrapper";
     asideDiv.className = "asideDiv";
     summary.className = "span-text";
+    showImage.className = "show-image";
 
     wrapDiv.append(showImage, summary, asideDiv);
     eachShowList.append(eachShowHeader, wrapDiv);
