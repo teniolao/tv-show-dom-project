@@ -123,7 +123,8 @@ function makePageForShows(shows) {
     const showImage = document.createElement("img");
     const asideDiv = document.createElement("div");
 
-    eachShowHeader.innerText = show.name;
+    eachShowHeader.innerText = show.name; 
+    eachShowHeader.className= "each-show-header"
     summary.innerHTML = show.summary;
 
     // condition to view content with images
